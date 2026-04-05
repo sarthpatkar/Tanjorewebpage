@@ -345,29 +345,18 @@ nav.scrolled {
   0%,100%{transform:scaleY(1);opacity:1}
   50%{transform:scaleY(0.5);opacity:0.4}
 }
-/* Live badge pulse */
+/* Live badge */
 .hero-live {
   position: absolute; top: 6.5rem; right: 5rem; z-index: 3;
-  display: flex; align-items: center; gap: 0.6rem;
+  display: flex; align-items: center; gap: 0.5rem;
   background: rgba(18,10,2,0.6);
   border: 1px solid rgba(232,144,10,0.25);
   padding: 0.6rem 1rem;
   backdrop-filter: blur(8px);
   animation: fadeUp 1s 1.3s both;
 }
-.live-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #2ECC71;
-  box-shadow: 0 0 0 0 rgba(46,204,113,0.4);
-  animation: livePulse 2s ease infinite;
-}
-@keyframes livePulse {
-  0%{box-shadow:0 0 0 0 rgba(46,204,113,0.4)}
-  70%{box-shadow:0 0 0 10px rgba(46,204,113,0)}
-  100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}
-}
 .live-text { font-size: 0.8rem; color: var(--cream); letter-spacing: 0.05em; }
-.live-text strong { color: #2ECC71; }
+.live-text strong { color: var(--saffron); font-weight: 700; }
 
 /* ── MARQUEE STRIP ── */
 .marquee-strip {
@@ -392,6 +381,160 @@ nav.scrolled {
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+/* ── BRANCH GATE + DIRECTORY ── */
+.branch-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(232,144,10,0.12), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(139,26,26,0.2), transparent 35%),
+    rgba(10, 5, 1, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+.branch-gate.show {
+  display: flex;
+}
+
+.branch-gate-panel {
+  width: min(980px, 100%);
+  border: 1px solid rgba(232,144,10,0.2);
+  background:
+    linear-gradient(135deg, rgba(28,15,5,0.95), rgba(18,10,2,0.92)),
+    radial-gradient(circle at top left, rgba(232,144,10,0.08), transparent 45%);
+  border-radius: 24px;
+  padding: clamp(1.2rem, 3.5vw, 2.2rem);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+}
+
+.branch-gate-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(251,246,238,0.6);
+}
+
+.branch-gate-title {
+  margin-top: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--cream);
+}
+
+.branch-gate-grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.branch-gate-card {
+  border: 1px solid rgba(232,144,10,0.18);
+  border-radius: 16px;
+  background: rgba(251,246,238,0.02);
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.branch-gate-image {
+  aspect-ratio: 16 / 10;
+  border: 1px dashed rgba(232,144,10,0.34);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(251,246,238,0.45);
+  background:
+    linear-gradient(135deg, rgba(232,144,10,0.06), rgba(139,26,26,0.08));
+}
+
+.branch-gate-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.06rem;
+  color: var(--cream);
+}
+
+.branch-gate-meta {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: rgba(251,246,238,0.58);
+}
+
+.branch-gate-card button {
+  margin-top: 0.2rem;
+}
+
+.branches-strip {
+  padding: 4.4rem var(--section-pad-x);
+  background:
+    linear-gradient(180deg, rgba(18,10,2,1), rgba(26,12,4,0.98));
+}
+
+.branches-wrap {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.branches-title {
+  margin-top: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  color: var(--cream);
+}
+
+.branch-directory {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.branch-card {
+  border: 1px solid rgba(232,144,10,0.16);
+  border-radius: 18px;
+  padding: 0.85rem;
+  background: rgba(251,246,238,0.02);
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.branch-card .branch-gate-image {
+  aspect-ratio: 4 / 3;
+}
+
+.branch-card h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  font-size: 1.06rem;
+}
+
+.branch-card p {
+  margin-top: 0.25rem;
+  color: rgba(251,246,238,0.56);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.branch-card .btn-outline {
+  margin-top: 0.55rem;
+  padding: 0.72rem 1.1rem;
+  font-size: 0.62rem;
 }
 
 /* ── ABOUT / STORY ── */
@@ -2116,13 +2259,13 @@ nav.scrolled .nav-logo {
 
 .hero-live {
   display: inline-flex;
-  min-height: 48px;
-  padding: 0.72rem 1.15rem;
-  border-radius: 999px;
+  min-height: 46px;
+  padding: 0.66rem 1.05rem;
+  border-radius: 16px;
   overflow: hidden;
   white-space: nowrap;
-  background: linear-gradient(135deg, rgba(27,16,7,0.88), rgba(18,10,2,0.72));
-  border: 1px solid rgba(232,144,10,0.24);
+  background: linear-gradient(135deg, rgba(40,22,9,0.92), rgba(18,10,2,0.82));
+  border: 1px solid rgba(232,144,10,0.28);
   box-shadow:
     0 14px 30px rgba(0,0,0,0.22),
     inset 0 1px 0 rgba(251,246,238,0.06);
@@ -2132,11 +2275,16 @@ nav.scrolled .nav-logo {
 
 .live-text {
   color: rgba(251,246,238,0.92);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  line-height: 1.35;
   text-shadow: 0 1px 12px rgba(0,0,0,0.35);
 }
 
 .live-text strong {
-  color: #f7f1e6;
+  color: var(--saffron);
 }
 
 .hero-sound {
@@ -2825,6 +2973,47 @@ nav.scrolled .nav-logo {
   height: 40px;
 }
 
+.visit-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.35rem;
+}
+
+.visit-action {
+  display: grid;
+  gap: 0.35rem;
+  text-decoration: none;
+  border: 1px solid rgba(61,43,31,0.26);
+  background: rgba(18,10,2,0.06);
+  color: var(--dark);
+  border-radius: 14px;
+  padding: 0.7rem 0.75rem;
+  min-width: 0;
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.visit-action strong {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.visit-action span {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: rgba(18,10,2,0.72);
+}
+
+.visit-action:hover,
+.visit-action:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(232,144,10,0.45);
+  background: rgba(232,144,10,0.08);
+}
+
 .info-item {
   opacity: 0;
   transform: translateX(-26px);
@@ -3231,12 +3420,16 @@ nav.scrolled .nav-logo {
   stroke-dashoffset: 176;
 }
 
-.scroll-ring span {
+.scroll-ring .ring-arrow {
   position: relative;
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
+  display: grid;
+  place-items: center;
   color: var(--cream);
+}
+
+.scroll-ring .ring-arrow svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* Reduced motion */
@@ -3267,6 +3460,10 @@ nav.scrolled .nav-logo {
 
 /* Responsive overrides */
 @media (max-width: 1024px) {
+  .branch-gate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   nav,
   nav.scrolled {
     left: 1rem;
@@ -3300,6 +3497,27 @@ nav.scrolled .nav-logo {
 }
 
 @media (max-width: 768px) {
+  .branch-gate-panel {
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .branch-gate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .branch-directory {
+    grid-template-columns: 1fr;
+  }
+
+  .branch-card {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    padding-bottom: calc(5.4rem + env(safe-area-inset-bottom));
+  }
+
   nav,
   nav.scrolled {
     top: 0.6rem;
@@ -3320,11 +3538,14 @@ nav.scrolled .nav-logo {
     display: grid;
     gap: 1.4rem;
     padding-top: 7.35rem;
+    min-height: auto;
+    padding-bottom: 3.6rem;
   }
 
   .hero-content {
     max-width: none;
     text-align: center;
+    padding-inline: 0.15rem;
   }
 
   .hero-tagline {
@@ -3370,13 +3591,17 @@ nav.scrolled .nav-logo {
 
   .hero-live {
     display: flex !important;
-    left: 50%;
+    position: relative;
+    left: auto;
     right: auto;
-    top: 5.25rem;
+    top: auto;
     width: min(calc(100% - 1.5rem), 360px);
-    transform: translateX(-50%);
+    transform: none;
+    margin: 0 auto 0.8rem;
     justify-content: center;
     border-radius: 16px;
+    white-space: normal;
+    text-align: center;
   }
 
   .hero-sound {
@@ -3432,6 +3657,10 @@ nav.scrolled .nav-logo {
     display: none;
   }
 
+  .visit-quick-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .dish-tabs {
     width: 100%;
     overflow-x: auto;
@@ -3447,6 +3676,19 @@ nav.scrolled .nav-logo {
 
   .dishes-grid {
     grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    gap: 0.8rem;
+  }
+
+  .menu-item-left {
+    min-width: 0;
+  }
+
+  .menu-item-name {
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 
   .exp-slider-track {
@@ -3491,8 +3733,9 @@ nav.scrolled .nav-logo {
     bottom: 7.2rem;
   }
 
-  .scroll-ring span {
-    font-size: 0.5rem;
+  .scroll-ring .ring-arrow svg {
+    width: 11px;
+    height: 11px;
   }
 
   .scroll-ring .ring-fg {
@@ -3511,6 +3754,15 @@ nav.scrolled .nav-logo {
 
   .mobile-action-bar {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .mobile-action-bar a {
+    min-height: 46px;
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
+    padding: 0 0.25rem;
   }
 
   .menu-overlay {
@@ -3528,9 +3780,30 @@ nav.scrolled .nav-logo {
     max-height: 92vh;
     overflow: hidden;
   }
+
+  footer {
+    padding-bottom: calc(5.1rem + env(safe-area-inset-bottom));
+  }
 }
 
 @media (max-width: 480px) {
+  .branch-gate {
+    padding: 0.8rem;
+  }
+
+  .branch-gate-title {
+    font-size: 1.35rem;
+  }
+
+  .branch-gate-meta {
+    font-size: 0.82rem;
+  }
+
+  .branches-strip {
+    padding-top: 3.6rem;
+    padding-bottom: 3.6rem;
+  }
+
   nav,
   nav.scrolled {
     left: 0.6rem;
@@ -3550,7 +3823,7 @@ nav.scrolled .nav-logo {
 
   .hero-live {
     display: flex !important;
-    top: 4.95rem;
+    top: auto;
     width: min(calc(100% - 1.2rem), 330px);
     padding: 0.66rem 0.9rem;
   }
@@ -3565,6 +3838,20 @@ nav.scrolled .nav-logo {
 
   .hero h1 {
     font-size: clamp(2.8rem, 11vw, 4rem);
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .menu-item-price {
+    padding-top: 0;
+  }
+
+  .visit-quick-actions {
+    grid-template-columns: 1fr;
   }
 
   .exp-features {
@@ -3592,7 +3879,7 @@ nav.scrolled .nav-logo {
 
   .hero-live {
     width: min(calc(100% - 0.9rem), 310px);
-    top: 4.8rem;
+    top: auto;
   }
 
   .hero-tagline,
@@ -3691,6 +3978,15 @@ nav.scrolled .nav-logo {
   <div class="loader-progress" aria-hidden="true"></div>
 </div>
 
+<!-- Branch Selector -->
+<div class="branch-gate show" id="branchGate" aria-modal="true" role="dialog" aria-labelledby="branchGateTitle">
+  <div class="branch-gate-panel">
+    <p class="branch-gate-eyebrow">Start Here</p>
+    <h2 class="branch-gate-title" id="branchGateTitle">Which branch would you like to visit?</h2>
+    <div class="branch-gate-grid" id="branchGateGrid"></div>
+  </div>
+</div>
+
 <!-- Floating CTA -->
 <div class="float-cta">
   <div class="float-label">Reserve a Table</div>
@@ -3710,7 +4006,7 @@ nav.scrolled .nav-logo {
     <li><a href="#reserve" onclick="closeDrawer()">Reserve</a></li>
   </ul>
   <div class="mobile-drawer-cta">
-    <a href="tel:09619011696">📞 &nbsp;+91 96190 11696</a>
+    <a href="tel:09619011696" id="drawerPhoneLink">📞 &nbsp;+91 96190 11696</a>
   </div>
   <div class="mobile-drawer-logo">The Tanjore Tiffin Room</div>
 </div>
@@ -3782,15 +4078,14 @@ nav.scrolled .nav-logo {
 
   <!-- Live open badge -->
   <div class="hero-live">
-    <div class="live-dot"></div>
-    <div class="live-text"><strong>Open Now</strong> · Until 1:30 AM</div>
+    <div class="live-text" id="branchHeroStatus"><strong>Serving Now</strong> &middot; Kitchen till 1:30 AM</div>
   </div>
 
   <div class="hero-shell">
     <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span>Andheri West · Versova · Est. Mumbai</span>
+      <span id="branchHeroLocation">Andheri West · Versova · Est. Mumbai</span>
     </div>
     <h1>
       The Tanjore
@@ -3841,6 +4136,15 @@ nav.scrolled .nav-logo {
     <span class="marquee-item">Up to ₹1,000 Off <span class="marquee-dot"></span></span>
   </div>
 </div>
+
+<!-- BRANCH DIRECTORY -->
+<section class="branches-strip" id="branches">
+  <div class="branches-wrap">
+    <div class="section-eyebrow">Other Branches</div>
+    <h2 class="branches-title">Explore Our Other Locations</h2>
+    <div class="branch-directory" id="branchDirectory"></div>
+  </div>
+</section>
 
 <!-- STORY / ABOUT -->
 <section class="story" id="story">
@@ -4150,21 +4454,21 @@ nav.scrolled .nav-logo {
         <span class="info-icon">📍</span>
         <div class="info-content">
           <strong>Address</strong>
-          <p>JEWEL MAHAL, Bungalow Rd, Ratan Kunj,<br>Aram Nagar, Versova, Andheri West<br>Mumbai, Maharashtra 400061</p>
+          <p id="branchAddressText">JEWEL MAHAL, Bungalow Rd, Ratan Kunj,<br>Aram Nagar, Versova, Andheri West<br>Mumbai, Maharashtra 400061</p>
         </div>
       </div>
       <div class="info-item">
         <span class="info-icon">🕐</span>
         <div class="info-content">
           <strong>Hours</strong>
-          <p>Dine-In: 12:00 PM – 1:30 AM (Daily)<br>Delivery: 11:00 AM – 12:00 AM</p>
+          <p id="branchHoursText">Dine-In: 12:00 PM – 1:30 AM (Daily)<br>Delivery: 11:00 AM – 12:00 AM</p>
         </div>
       </div>
       <div class="info-item">
         <span class="info-icon">📞</span>
         <div class="info-content">
           <strong>Reservations</strong>
-          <p><a href="tel:09619011696">+91 96190 11696</a></p>
+          <p><a href="tel:09619011696" id="branchInfoPhone">+91 96190 11696</a></p>
         </div>
       </div>
       <div class="info-item">
@@ -4177,6 +4481,20 @@ nav.scrolled .nav-logo {
       <div class="offers-strip">
         <div class="offer-badge">🏷 Offer</div>
         <p>Up to <strong style="color:var(--saffron)">₹1,000 off</strong> with bank offers on Zomato, EazyDiner &amp; Swiggy</p>
+      </div>
+      <div class="visit-quick-actions">
+        <a class="visit-action" href="https://www.google.com/maps/search/?api=1&query=JEWEL+MAHAL,+Bungalow+Rd,+Ratan+Kunj,+Aram+Nagar,+Versova,+Andheri+West,+Mumbai,+Maharashtra+400061" target="_blank" rel="noopener" id="branchDirectionsLink">
+          <strong>Directions</strong>
+          <span>Open in Google Maps</span>
+        </a>
+        <a class="visit-action" href="#" data-open-menu>
+          <strong>Chef Picks</strong>
+          <span>Browse signature dishes</span>
+        </a>
+        <a class="visit-action" href="tel:09619011696" id="branchGroupPhone">
+          <strong>Group Booking</strong>
+          <span>Call for 9+ guests</span>
+        </a>
       </div>
       <!-- Delivery partner logos as text links -->
       <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
@@ -4244,7 +4562,7 @@ nav.scrolled .nav-logo {
       </div>
       <button class="reserve-btn" id="reserveBtn" type="button">Confirm Reservation</button>
       <div class="reserve-feedback" id="reserveFeedback" aria-live="polite"></div>
-      <p class="reserve-note">Or call us: <a href="tel:09619011696">+91 96190 11696</a></p>
+      <p class="reserve-note">Or call us: <a href="tel:09619011696" id="reservePhoneLink">+91 96190 11696</a></p>
     </div>
   </div>
 </section>
@@ -4275,25 +4593,25 @@ nav.scrolled .nav-logo {
     <div class="footer-col">
       <h4>Order Online</h4>
       <ul>
-        <li><a href="#">Zomato</a></li>
-        <li><a href="#">Swiggy</a></li>
-        <li><a href="#">EazyDiner</a></li>
-        <li><a href="tel:09619011696">+91 96190 11696</a></li>
+        <li><a href="#" id="footerOrderLink1">Zomato</a></li>
+        <li><a href="#" id="footerOrderLink2">Swiggy</a></li>
+        <li><a href="#" id="footerOrderLink3">EazyDiner</a></li>
+        <li><a href="tel:09619011696" id="footerPhoneLink">+91 96190 11696</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Visit Us</h4>
       <ul>
-        <li><a href="#">JEWEL MAHAL, Bungalow Rd</a></li>
-        <li><a href="#">Versova, Andheri West</a></li>
-        <li><a href="#">Mumbai 400061</a></li>
-        <li><a href="#">Open 12 PM – 1:30 AM</a></li>
+        <li><a href="#" id="footerAddressLine1">JEWEL MAHAL, Bungalow Rd</a></li>
+        <li><a href="#" id="footerAddressLine2">Versova, Andheri West</a></li>
+        <li><a href="#" id="footerAddressLine3">Mumbai 400061</a></li>
+        <li><a href="#" id="footerAddressLine4">Open 12 PM – 1:30 AM</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p>© 2025 The Tanjore Tiffin Room, Andheri. All rights reserved.</p>
-    <p style="color:rgba(251,246,238,0.15);font-size:0.78rem;">Crafted with care · Andheri West · Mumbai</p>
+    <p style="color:rgba(251,246,238,0.15);font-size:0.78rem;" id="footerCityLine">Crafted with care · Andheri West · Mumbai</p>
   </div>
 </footer>
 
@@ -4304,7 +4622,8 @@ function syncBodyLock() {
   const menuOpen = document.getElementById('menuOverlay')?.classList.contains('open');
   const drawerOpen = document.getElementById('mobileDrawer')?.classList.contains('open');
   const modalOpen = document.querySelector('.dish-modal.open');
-  document.body.style.overflow = menuOpen || drawerOpen || modalOpen ? 'hidden' : '';
+  const gateOpen = document.getElementById('branchGate')?.classList.contains('show');
+  document.body.style.overflow = menuOpen || drawerOpen || modalOpen || gateOpen ? 'hidden' : '';
 }
 
 function toggleDrawer() {
@@ -4358,9 +4677,66 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const branchCatalog = {
+    khar: {
+      key: 'khar',
+      name: 'The Tanjore Tiffin Room, Khar',
+      cityLine: 'Khar West · Mumbai',
+      heroLocation: 'Khar West · Mumbai · Union Park',
+      heroStatus: '<strong>Open</strong> · Closes 11:30 PM',
+      rating: 4.4,
+      reviewCount: 1741,
+      addressHtml: 'room, 12, The Tanjore Tiffin, Union Park,<br>Khar West, Mumbai, Maharashtra 400052',
+      footerAddress: ['room, 12, The Tanjore Tiffin', 'Union Park, Khar West', 'Mumbai 400052', 'Open · Closes 11:30 PM'],
+      hoursHtml: 'Open · Closes 11:30 PM<br>Dine-In · Takeaway · No-contact delivery',
+      phoneDisplay: '+91 73030 21212',
+      phoneTel: '7303021212',
+      mapQuery: 'room 12 The Tanjore Tiffin Union Park Khar West Mumbai Maharashtra 400052',
+      orderLinks: { zomato: '#', swiggy: '#', eazydiner: '#' }
+    },
+    nesco: {
+      key: 'nesco',
+      name: 'The Tanjore Tiffin Room, Nesco',
+      cityLine: 'Nesco · Goregaon East · Mumbai',
+      heroLocation: 'Nesco Gate 2 · Goregaon East · Mumbai',
+      heroStatus: '<strong>Open</strong> · Closes 12:30 AM',
+      rating: 4.1,
+      reviewCount: 531,
+      addressHtml: 'Gate 2, Building No 2, Western Urban Rd,<br>NESCO, Goregaon East, Mumbai, Maharashtra 400063',
+      footerAddress: ['Gate 2, Building No 2, Western Urban Rd', 'NESCO, Goregaon East', 'Mumbai 400063', 'Open · Closes 12:30 AM'],
+      hoursHtml: 'Open · Closes 12:30 AM<br>Dine-In · Takeaway · No-contact delivery',
+      phoneDisplay: '+91 99202 79745',
+      phoneTel: '9920279745',
+      mapQuery: 'Gate 2 Building No 2 Western Urban Road NESCO Goregaon East Mumbai Maharashtra 400063',
+      orderLinks: { zomato: '#', swiggy: '#', eazydiner: '#' }
+    },
+    goa: {
+      key: 'goa',
+      name: 'The Tanjore Tiffin Room, Goa',
+      cityLine: 'Anjuna · Arpora · Goa',
+      heroLocation: 'Anjuna · Arpora · Goa',
+      heroStatus: '<strong>Open</strong> · Closes 12:00 AM',
+      rating: 4.5,
+      reviewCount: 666,
+      addressHtml: '1111, Road, near Orchard Stores, near Corporation Bank,<br>Mazal Waddo, Anjuna, Arpora, Goa 403509',
+      footerAddress: ['1111 Road, near Orchard Stores', 'Mazal Waddo, Anjuna, Arpora', 'Goa 403509', 'Open · Closes 12:00 AM'],
+      hoursHtml: 'Open · Closes 12:00 AM<br>Dine-In · Takeaway · No-contact delivery',
+      phoneDisplay: '+91 75067 41286',
+      phoneTel: '7506741286',
+      mapQuery: '1111 Road near Orchard Stores near Corporation Bank Mazal Waddo Anjuna Arpora Goa 403509',
+      orderLinks: { zomato: '#', swiggy: '#', eazydiner: '#' }
+    }
+  };
+  const branchFromURL = new URLSearchParams(window.location.search).get('branch');
+  const hasChosenBranch = Boolean(branchFromURL && branchCatalog[branchFromURL]);
+  const activeBranchKey = hasChosenBranch ? branchFromURL : 'khar';
+  const activeBranch = branchCatalog[activeBranchKey];
+  const getBranchMapLink = branch =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.mapQuery)}`;
   const waBase =
     document.querySelector('a[href*="wa.me"]')?.getAttribute('href') ||
     'https://wa.me/919619011696';
+  const mapsBase = getBranchMapLink(activeBranch);
 
   const useIcon = (id, className = '') =>
     `<svg ${className ? `class="${className}"` : ''} aria-hidden="true"><use href="#${id}"></use></svg>`;
@@ -4469,6 +4845,114 @@ document.addEventListener('DOMContentLoaded', () => {
         container.querySelectorAll(itemSelector).forEach(item => item.setAttribute('data-stagger', ''));
       });
     });
+  };
+
+  const initBranchRouting = () => {
+    const gate = document.getElementById('branchGate');
+    const gateGrid = document.getElementById('branchGateGrid');
+    const directory = document.getElementById('branchDirectory');
+    const goToBranch = key => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('branch', key);
+      window.location.href = url.toString();
+    };
+
+    if (gateGrid) {
+      gateGrid.innerHTML = Object.values(branchCatalog)
+        .map(
+          branch => `
+            <article class="branch-gate-card">
+              <div class="branch-gate-image">Image Placeholder<br>${branch.cityLine}</div>
+              <div>
+                <h3>${branch.name}</h3>
+                <p class="branch-gate-meta">${branch.rating.toFixed(1)} · ${branch.reviewCount.toLocaleString('en-IN')} reviews</p>
+              </div>
+              <button class="btn-primary" type="button" data-branch-select="${branch.key}">Visit This Branch</button>
+            </article>
+          `
+        )
+        .join('');
+      gateGrid.querySelectorAll('[data-branch-select]').forEach(button => {
+        button.addEventListener('click', () => goToBranch(button.getAttribute('data-branch-select')));
+      });
+    }
+
+    if (directory) {
+      directory.innerHTML = Object.values(branchCatalog)
+        .filter(branch => branch.key !== activeBranch.key)
+        .map(
+          branch => `
+            <article class="branch-card">
+              <div class="branch-gate-image">Image Placeholder<br>${branch.cityLine}</div>
+              <div>
+                <h4>${branch.name}</h4>
+                <p>${branch.rating.toFixed(1)} · ${branch.reviewCount.toLocaleString('en-IN')} reviews</p>
+                <button class="btn-outline" type="button" data-branch-nav="${branch.key}">Open Branch Page</button>
+              </div>
+            </article>
+          `
+        )
+        .join('');
+      directory.querySelectorAll('[data-branch-nav]').forEach(button => {
+        button.addEventListener('click', () => goToBranch(button.getAttribute('data-branch-nav')));
+      });
+    }
+
+    document.title = `${activeBranch.name} — The Tanjore Tiffin Room`;
+    const heroLoc = document.getElementById('branchHeroLocation');
+    const heroStatus = document.getElementById('branchHeroStatus');
+    const addressText = document.getElementById('branchAddressText');
+    const hoursText = document.getElementById('branchHoursText');
+    const infoPhone = document.getElementById('branchInfoPhone');
+    const reservePhone = document.getElementById('reservePhoneLink');
+    const drawerPhone = document.getElementById('drawerPhoneLink');
+    const groupPhone = document.getElementById('branchGroupPhone');
+    const directionsLink = document.getElementById('branchDirectionsLink');
+    const footerPhone = document.getElementById('footerPhoneLink');
+    const footerAddressLine1 = document.getElementById('footerAddressLine1');
+    const footerAddressLine2 = document.getElementById('footerAddressLine2');
+    const footerAddressLine3 = document.getElementById('footerAddressLine3');
+    const footerAddressLine4 = document.getElementById('footerAddressLine4');
+    const footerCityLine = document.getElementById('footerCityLine');
+    const footerOrder1 = document.getElementById('footerOrderLink1');
+    const footerOrder2 = document.getElementById('footerOrderLink2');
+    const footerOrder3 = document.getElementById('footerOrderLink3');
+
+    if (heroLoc) heroLoc.textContent = `${activeBranch.heroLocation} · Est. Tanjore`;
+    if (heroStatus) heroStatus.innerHTML = activeBranch.heroStatus;
+    if (addressText) addressText.innerHTML = activeBranch.addressHtml;
+    if (hoursText) hoursText.innerHTML = activeBranch.hoursHtml;
+    if (directionsLink) directionsLink.href = mapsBase;
+
+    [infoPhone, reservePhone, groupPhone, footerPhone].forEach(link => {
+      if (!link) return;
+      link.href = `tel:${activeBranch.phoneTel}`;
+      link.textContent = activeBranch.phoneDisplay;
+    });
+    if (drawerPhone) {
+      drawerPhone.href = `tel:${activeBranch.phoneTel}`;
+      drawerPhone.innerHTML = `📞 &nbsp;${activeBranch.phoneDisplay}`;
+    }
+
+    if (footerAddressLine1) footerAddressLine1.textContent = activeBranch.footerAddress[0];
+    if (footerAddressLine2) footerAddressLine2.textContent = activeBranch.footerAddress[1];
+    if (footerAddressLine3) footerAddressLine3.textContent = activeBranch.footerAddress[2];
+    if (footerAddressLine4) footerAddressLine4.textContent = activeBranch.footerAddress[3];
+    [footerAddressLine1, footerAddressLine2, footerAddressLine3, footerAddressLine4].forEach(link => {
+      if (link) link.href = mapsBase;
+    });
+    if (footerCityLine) footerCityLine.textContent = `Crafted with care · ${activeBranch.cityLine}`;
+    if (footerOrder1) footerOrder1.href = activeBranch.orderLinks.zomato;
+    if (footerOrder2) footerOrder2.href = activeBranch.orderLinks.swiggy;
+    if (footerOrder3) footerOrder3.href = activeBranch.orderLinks.eazydiner;
+
+    if (!hasChosenBranch) {
+      gate?.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    } else {
+      gate?.classList.remove('show');
+      document.body.style.overflow = '';
+    }
   };
 
   const initLoader = () => {
@@ -4621,9 +5105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!strip || strip.querySelector('.marquee-shell')) return;
     const items = [
       'Chicken Ghee Roast',
-      '4.7★ on Google',
-      '4,207+ Reviews',
-      'Open Until 1:30 AM',
+      `${activeBranch.rating.toFixed(1)}★ on Google`,
+      `${activeBranch.reviewCount.toLocaleString('en-IN')} Reviews`,
+      activeBranch.footerAddress[3],
       'Chettinad · Coastal · Kerala',
       'South Indian Cocktails',
       'Outdoor Seating',
@@ -4689,7 +5173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <circle class="ring-bg" cx="26" cy="26" r="21"></circle>
         <circle class="ring-fg" cx="26" cy="26" r="21"></circle>
       </svg>
-      <span>0%</span>
+      <span class="ring-arrow">${useIcon('icon-arrow-up')}</span>
     `;
     if (!document.querySelector('.scroll-ring')) document.body.appendChild(ring);
 
@@ -4701,7 +5185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.querySelector('.back-to-top')) document.body.appendChild(backToTop);
 
     const ringPath = ring.querySelector('.ring-fg');
-    const ringLabel = ring.querySelector('span');
     const radius = 21;
     const circumference = 2 * Math.PI * radius;
 
@@ -4714,7 +5197,6 @@ document.addEventListener('DOMContentLoaded', () => {
       nav?.classList.toggle('scrolled', window.scrollY > 80);
       if (navProgress) navProgress.style.transform = `scaleX(${progress})`;
       ringPath.style.strokeDashoffset = `${circumference * (1 - progress)}`;
-      ringLabel.textContent = `${Math.round(progress * 100)}%`;
       backToTop.classList.toggle('show', window.scrollY > 500 || coarsePointer);
     };
 
@@ -5022,7 +5504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const starsRow = section?.querySelector('.stars-row');
     if (!section || !originalWrap || !ratingNum || !starsRow) return;
 
-    ratingNum.textContent = '4.7';
+    ratingNum.textContent = activeBranch.rating.toFixed(1);
     starsRow.innerHTML = '<span class="star">★</span>'.repeat(5);
 
     if (!section.querySelector('.reviews-rows')) {
@@ -5080,7 +5562,7 @@ document.addEventListener('DOMContentLoaded', () => {
       entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          animateCounter(ratingNum, 4.7, 1, '', '', 1500);
+          animateCounter(ratingNum, activeBranch.rating, 1, '', '', 1500);
           ratingObserver.unobserve(entry.target);
         });
       },
@@ -5257,9 +5739,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const links = [...socialLinks.querySelectorAll('.social-link')];
+    const mapsLink = links[1]?.getAttribute('href');
     const socialMarkup = [
       { label: 'Instagram', icon: useIcon('icon-instagram'), href: links[0]?.getAttribute('href') || '#' },
-      { label: 'Google Maps', icon: useIcon('icon-map-pin'), href: links[1]?.getAttribute('href') || '#' },
+      { label: 'Google Maps', icon: useIcon('icon-map-pin'), href: mapsLink && mapsLink !== '#' ? mapsLink : mapsBase },
       {
         label: 'Zomato',
         icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v3L9 18h10v3H5v-3L15 9H5Z" fill="currentColor"></path></svg>',
@@ -5284,7 +5767,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fan.innerHTML = `
       <a class="float-mini" href="#reserve">Reserve</a>
       <a class="float-mini" href="${waBase}" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="float-mini" href="tel:09619011696">Call</a>
+      <a class="float-mini" href="${mapsBase}" target="_blank" rel="noopener">Directions</a>
+      <a class="float-mini" href="tel:${activeBranch.phoneTel}">Call</a>
     `;
     if (!floatCta.querySelector('.float-fan')) floatCta.appendChild(fan);
 
@@ -5302,8 +5786,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const bar = document.createElement('div');
       bar.className = 'mobile-action-bar';
       bar.innerHTML = `
-        <a class="call-btn" href="tel:09619011696">📞 Call</a>
-        <a class="wa-btn" href="${waBase}" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="call-btn" href="tel:${activeBranch.phoneTel}">Call</a>
+        <a class="wa-btn" href="${waBase}" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="call-btn" href="${mapsBase}" target="_blank" rel="noopener">Directions</a>
       `;
       document.body.appendChild(bar);
       window.setTimeout(() => bar.classList.add('show'), 2000);
@@ -5339,6 +5824,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   addStaggerAttributes();
+  initBranchRouting();
   initLoader();
   initAccessibility();
   initCursor();
