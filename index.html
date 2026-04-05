@@ -3902,6 +3902,14 @@ nav.scrolled .nav-logo {
   padding-bottom: 0.08em;
 }
 
+.hero-media {
+  width: min(34vw, 520px);
+}
+
+.hero-photo-card img {
+  opacity: 0.64;
+}
+
 .info-content {
   min-width: 0;
 }
@@ -3962,11 +3970,57 @@ nav.scrolled .nav-logo {
 }
 
 .exp-photo-band {
-  max-width: min(100%, 1020px);
+  max-width: min(100%, 760px);
 }
 
 .exp-photo-band img {
-  height: clamp(220px, 30vw, 360px);
+  height: clamp(130px, 18vw, 210px);
+}
+
+.exp-slider {
+  width: min(100%, 910px);
+  margin: 0 auto 1.55rem;
+}
+
+.exp-slider-track {
+  grid-auto-columns: minmax(62%, 1fr);
+  gap: 0.75rem;
+}
+
+.exp-slide {
+  min-height: 0;
+  height: clamp(240px, 32vw, 360px);
+}
+
+.float-cta {
+  position: fixed !important;
+  right: 1.35rem;
+  bottom: 1.2rem;
+  z-index: 260;
+}
+
+.back-to-top {
+  right: calc(1.35rem + 58px + 0.85rem);
+  bottom: calc(1.2rem + 3px);
+  z-index: 258;
+}
+
+.float-label {
+  position: absolute;
+  right: 0;
+  bottom: calc(58px + 0.9rem);
+  margin: 0;
+}
+
+.float-fan {
+  position: absolute;
+  right: 0;
+  bottom: calc(58px + 0.9rem);
+}
+
+.float-cta:hover .float-label {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .exp-feat-icon {
@@ -4052,6 +4106,26 @@ nav.scrolled .nav-logo {
     grid-template-columns: 1fr;
   }
 
+  .exp-slider {
+    max-width: 100%;
+  }
+
+  .exp-slider-track {
+    grid-auto-columns: 78%;
+  }
+
+  .exp-slide {
+    height: clamp(220px, 52vw, 320px);
+  }
+
+  .exp-photo-band {
+    max-width: 100%;
+  }
+
+  .exp-photo-band img {
+    height: 155px;
+  }
+
   .mobile-action-bar a {
     text-align: center;
     justify-content: center;
@@ -4063,8 +4137,12 @@ nav.scrolled .nav-logo {
     font-size: clamp(2.35rem, 12.2vw, 3.2rem);
   }
 
+  .exp-slide {
+    height: 220px;
+  }
+
   .exp-photo-band img {
-    height: 185px;
+    height: 118px;
   }
 }
 
